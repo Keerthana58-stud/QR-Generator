@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>QR Code Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f4f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    input {
+      padding: 10px;
+      width: 300px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background: #4f46e5;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    img {
+      margin-top: 20px;
+    }
+
+    a.download-btn {
+      display: inline-block;
+      margin-top: 10px;
+      background: #10b981;
+      color: white;
+      padding: 8px 16px;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+
+  <form method="POST">
+    <h2>QR Code Generator</h2>
+    <input type="text" name="qrtext" placeholder="Enter text or URL" required><br>
+    <button type="submit">Generate QR Code</button>
+
+    {% if qr_image_url %}
+      <div>
+        <img src="{{ qr_image_url }}" alt="QR Code">
+        <br>
+        <a class="download-btn" href="{{ qr_image_url }}" download>Download QR Code</a>
+      </div>
+    {% endif %}
+  </form>
+
+</body>
+</html>
